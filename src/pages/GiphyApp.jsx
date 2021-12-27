@@ -3,9 +3,10 @@ import { Component } from 'react';
 import { gifService } from '../services/gif.service.js';
 import { GifsList } from '../cmps/GifList.jsx';
 
-import loading from '../assets/imgs/loading.gif';
-import Select from 'react-select';
+import CircularProgress from '@mui/material/CircularProgress';
 
+import Select from 'react-select';
+import LinearProgress from '@mui/material/LinearProgress';
 export class GiphyApp extends Component {
 	state = {
 		gifs: null,
@@ -45,7 +46,8 @@ export class GiphyApp extends Component {
 
 	render() {
 		const { gifs ,prevSearch,searchString} = this.state;
-		if (!gifs) return <div className="app-container"><img className='loading' src={loading} alt="loading" /></div>;
+		if (!gifs) return <div className="app-container"> 
+		   <div className='loading-container'> <CircularProgress color="secondary" className='loading' /></div></div>;
 
 		return (
 			<div >
@@ -66,7 +68,10 @@ export class GiphyApp extends Component {
 				</div>
 				{
 				 (this.state.loading)?
-					<img className='loading' src={loading} alt="loading" />
+				
+     <div className='loading-container'> <CircularProgress color="secondary" className='loading' /></div>
+     
+  
 				:
 				 <GifsList gifs={gifs} />
 }
