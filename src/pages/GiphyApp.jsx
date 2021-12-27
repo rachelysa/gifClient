@@ -37,10 +37,13 @@ export class GiphyApp extends Component {
 
 	searchGifs(searchString) {
 		this.setState({ loading: true })
-		gifService.search(searchString).then(res => {
-			const gifs = res.data
+		 gifService.search(searchString).then(res => {
+			const gifs = res
+			console.log(gifs);
 			this.setState({ gifs, searchString, loading: false })
+			
 		})
+		
 	}
 
 	render() {

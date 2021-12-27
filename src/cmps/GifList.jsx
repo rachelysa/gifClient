@@ -7,7 +7,7 @@ export function GifsList({ gifs }) {
                 <div className="gifs-list">
                         {
                                 gifs.map(function (item, index) {
-                                        return <GifPreview url={item.images.original.webp} key={index} i={index} />
+                                        return <GifPreview url={item} key={index} i={index} />
                                 })
                         }
                 </div>)

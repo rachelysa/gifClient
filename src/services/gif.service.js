@@ -1,6 +1,9 @@
 
 import axios from 'axios';
+import {giphyService} from './services/giphy.service'
+import {GagService} from './services/9Gag .service'
 var prevSearch=[];
+var API='Giphy' //Giphy or 9GAG as the only need-change to switch to another API
 export const gifService = {
   search,
   addSearch,
@@ -8,9 +11,15 @@ export const gifService = {
 
 }
 
-function search(search) {
- 
-  return axios.get(`https://localhost:44325/api/giphy/${search}`)
+function search(searchTerm) {
+ if(API==='Giphy')
+  return giphyService.search(searchTerm).then(res=>{
+             var urls= res.data.map(item=>{return item.images.original.webp});
+             return urls;
+  })
+  else GagService.search(searchTerm).then(res=>{
+//Returns an array with URL only as above
+  })
 
 }
 
