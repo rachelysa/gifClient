@@ -4,16 +4,15 @@ import { gifService } from '../services/gif.service.js';
 import { GifsList } from '../cmps/GifList.jsx';
 
 import CircularProgress from '@mui/material/CircularProgress';
-
 import Select from 'react-select';
-import LinearProgress from '@mui/material/LinearProgress';
+
 export class GiphyApp extends Component {
 	state = {
 		gifs: null,
 		searchString: '',
 		timeOut: 0,
 		prevSearch: [],
-		loading:false
+		loading: false
 
 	};
 
@@ -37,17 +36,17 @@ export class GiphyApp extends Component {
 	}
 
 	searchGifs(searchString) {
-		this.setState({loading:true})
+		this.setState({ loading: true })
 		gifService.search(searchString).then(res => {
 			const gifs = res.data
-			this.setState({ gifs, searchString,loading:false })
+			this.setState({ gifs, searchString, loading: false })
 		})
 	}
 
 	render() {
-		const { gifs ,prevSearch,searchString} = this.state;
-		if (!gifs) return <div className="app-container"> 
-		   <div className='loading-container'> <CircularProgress color="secondary" className='loading' /></div></div>;
+		const { gifs, prevSearch, searchString } = this.state;
+		if (!gifs) return <div className="app-container">
+			<div className='loading-container'> <CircularProgress color="secondary" className='loading' /></div></div>;
 
 		return (
 			<div >
@@ -67,14 +66,10 @@ export class GiphyApp extends Component {
 					/>
 				</div>
 				{
-				 (this.state.loading)?
-				
-     <div className='loading-container'> <CircularProgress color="secondary" className='loading' /></div>
-     
-  
-				:
-				 <GifsList gifs={gifs} />
-}
+					(this.state.loading) ?
+						<div className='loading-container'> <CircularProgress color="secondary" className='loading' /></div> :
+						<GifsList gifs={gifs} />
+				}
 			</div>
 		);
 	}
