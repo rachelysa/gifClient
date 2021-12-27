@@ -12,6 +12,7 @@ export class GiphyApp extends Component {
 		searchString: '',
 		timeOut: 0,
 		prevSearch: [],
+		loading:false
 
 	};
 
@@ -35,9 +36,10 @@ export class GiphyApp extends Component {
 	}
 
 	searchGifs(searchString) {
+		this.setState({loading:true})
 		gifService.search(searchString).then(res => {
 			const gifs = res.data
-			this.setState({ gifs, searchString })
+			this.setState({ gifs, searchString,loading:false })
 		})
 	}
 
@@ -62,8 +64,12 @@ export class GiphyApp extends Component {
 						}}
 					/>
 				</div>
-				<GifsList gifs={gifs} />
-
+				{
+				 (this.state.loading)?
+					<img className='loading' src={loading} alt="loading" />
+				:
+				 <GifsList gifs={gifs} />
+}
 			</div>
 		);
 	}
