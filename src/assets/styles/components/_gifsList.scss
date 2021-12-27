@@ -1,0 +1,38 @@
+.gifs-list {
+    position: relative;
+    right: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    margin: 20px 0;
+    max-width: 80vw;
+    overflow: hidden;
+    margin-bottom: -1.5em;
+
+    column-count: 5;
+    column-gap: 1.5em;
+    column-fill: auto;
+    .gif {
+        border: none;
+    }
+
+    @media screen and (max-width: 1300px) {
+        column-count: 4;
+    }
+    @media screen and (max-width: 1000px) {
+        column-count: 3;
+    }
+    @media screen and (max-width: 650px) {
+        column-count: 2;
+    }
+    @media screen and (max-width: 480px) {
+        column-count: 1;
+    }
+    .img {
+        margin-bottom: 1.5em;
+        border-radius: 5px;
+        transition: 0.5s;
+        &:hover {
+            opacity: 0.4;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+.app-footer {
+	
+	margin-top: 20px;
+	border-top: 2px solid rgb(255, 255, 255);
+	@include flex;
+
+	img {
+		width: 180px;
+		// margin-top: 2px;
+		margin-left: 10px;
+	}
+	h3{
+		color: #e58425;
+		font-family: cursive
+	}
+}

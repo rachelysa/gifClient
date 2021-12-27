@@ -1,0 +1,26 @@
+.gif-preview {
+    position: relative;
+    overflow: auto;
+    display: inline-block;
+
+    .share-container {
+        position: absolute;
+        @include flex;
+        gap: 3px;
+        top: 6px;
+        left: 10px;
+
+        .share-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid black;
+            background-color: whitesmoke;
+            transition: 0.5s;
+            padding: 5px;
+            border-radius: 2px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
